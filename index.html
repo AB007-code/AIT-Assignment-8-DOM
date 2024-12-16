@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h2,p{
+            text-align: center;
+            font-size:1em;
+            font-weight:800;
+            font-family: Arial, Helvetica, sans-serif
+        }
+       img{
+        width: 100%;
+        /* height: 500px; */
+        box-shadow: 2px 2px 5px rgb(184, 179, 179),-2px -2px 5px rgb(184, 179, 179);
+        cursor: pointer;
+        height: 500px;
+       }
+       section{
+         display: flex;
+         justify-content: center;
+         height: 500px;
+         position: relative;
+       }
+       div{
+        width: 40%;
+        position:relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+       }
+       .i{
+         position: absolute;
+         display: inline-block;
+         width: 128px;
+         opacity: 0;
+         color: red;
+         animation: myani 2s linear;
+         font-size: 5em;
+       }
+       @keyframes myani{
+        0%,
+        to {
+            opacity:0;
+            transform: scale(0);
+        }
+
+        15% {
+            opacity:0.9;
+            transform: scale(1.2);
+        }
+        30% {
+            transform: scale(0.95);
+        }
+        45%,
+        80% {
+            opacity:0.9;
+            transform:scale(1)
+        }
+       }
+    </style>
+</head>
+<body>
+       <h2>Double Click On the image to <span id="h2_span">❤️</span> it</h2>
+       <p>You liked it <span id="p_span">0  </span>times</p>
+    <section>
+       <div>
+        <!-- <i class="fa-solid fa-heart i"></i> -->
+        <img src="https://images.unsplash.com/photo-1731994710373-849feb905390?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2fHx8ZW58MHx8fHx8" alt="img1"/>
+       </div>
+    </section>
+       <script>
+        const span1 = document.querySelector("#h2_span")
+        const span2 = document.querySelector("#p_span")
+        const div = document.querySelector("div")
+        // const icon = document.querySelector("i")
+        const icon = document.createElement("i")
+        icon.setAttribute("class","fa-solid fa-heart i")
+        const img = document.querySelector("img")
+        let count = 1;
+        img.addEventListener("dblclick", (e)=>{
+          span2.textContent = `${count++} `;
+            div.appendChild(icon)
+            // icon.style.width=`${e.x}px`
+            // icon.style.height=`${e.y}px`
+        //    e.clientY
+          setTimeout(()=>{
+           div.removeChild(icon)
+          },1000)
+        })
+       </script>
+       <script src="https://kit.fontawesome.com/392674d31f.js" crossorigin="anonymous"></script>
+</body>
+</html>
